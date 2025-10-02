@@ -98,6 +98,28 @@
             color: #586069;
         }
 
+
+        .news-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .news-item::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0366d6;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .news-item .date {
+            color: #0366d6;
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        
         .skills {
             display: flex;
             flex-wrap: wrap;
