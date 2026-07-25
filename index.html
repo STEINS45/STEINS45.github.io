@@ -1,329 +1,492 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Website</title>
+    <title>Yuyang Ji (吉宇阳)</title>
+    <meta name="description" content="Yuyang Ji is a CS PhD student at Drexel University working on computer vision, biometrics, and vision-language models.">
+    <meta name="author" content="Yuyang Ji">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="83d99eeb-4121-4227-b402-7bbf073f84b5"></script>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MCN8J97RNZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MCN8J97RNZ');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MCN8J97RNZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MCN8J97RNZ');
+    </script>
     <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #555555;
+            --accent: #1a56db;
+            --accent-hover: #0d3ea8;
+            --border: #e5e7eb;
+            --venue: #b91c1c;
+            --tag-bg: #eef2ff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #121417;
+                --text: #e6e6e6;
+                --text-secondary: #a3a3a3;
+                --accent: #7aa2f7;
+                --accent-hover: #a8c1ff;
+                --border: #2a2e35;
+                --venue: #f08080;
+                --tag-bg: #1e2433;
+            }
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
+        html {
+            scroll-behavior: smooth;
         }
 
-        header {
-            text-align: center;
-            padding: 50px 0;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--text);
+            background-color: var(--bg);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 24px 24px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* ---------- Header ---------- */
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 36px;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .header-text h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .header-text .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .header-text p {
+            color: var(--text);
+            margin-bottom: 10px;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 175px;
+            height: 175px;
             border-radius: 50%;
-            margin-bottom: 20px;
-            border: 3px solid #0366d6;
-        }
-
-        h1 {
-            color: #24292e;
-            margin-bottom: 10px;
-        }
-
-        .bio {
-            color: #586069;
-            max-width: 600px;
-            margin: 0 auto;
+            object-fit: cover;
+            flex-shrink: 0;
         }
 
         .social-links {
-            margin-top: 20px;
+            margin-top: 6px;
         }
 
         .social-links a {
-            color: #0366d6;
-            text-decoration: none;
-            margin: 0 10px;
+            margin-right: 18px;
             font-weight: 500;
         }
 
+        /* ---------- Sections ---------- */
         section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 36px;
         }
 
         h2 {
-            color: #24292e;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e1e4e8;
-            padding-bottom: 10px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 18px;
         }
 
-        .project {
-            margin-bottom: 25px;
+        h3.year {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin: 22px 0 12px;
         }
 
-        .project h3 {
-            color: #0366d6;
+        h3.year:first-of-type {
+            margin-top: 0;
+        }
+
+        /* ---------- News ---------- */
+        .news-item {
+            display: flex;
+            gap: 14px;
             margin-bottom: 10px;
         }
 
-        .project p {
-            color: #586069;
+        .news-item .date {
+            color: var(--text-secondary);
+            font-weight: 600;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
         }
 
+        /* ---------- Publications ---------- */
+        .pub {
+            margin-bottom: 22px;
+        }
 
-        .news-item {
-            margin-bottom: 15px;
-            padding-left: 20px;
+        .pub .title {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .pub .authors {
+            color: var(--text);
+            margin-top: 2px;
+        }
+
+        .pub .authors .me {
+            font-weight: 700;
+        }
+
+        .pub .venue {
+            color: var(--venue);
+            font-weight: 600;
+        }
+
+        .pub .venue.preprint {
+            color: var(--text-secondary);
+        }
+
+        .pub .links {
+            margin-top: 4px;
+        }
+
+        .pub .links a {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: var(--tag-bg);
+            padding: 1px 10px;
+            border-radius: 4px;
+            margin-right: 8px;
+        }
+
+        .footnote {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* ---------- Service ---------- */
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding-left: 18px;
             position: relative;
+            margin-bottom: 6px;
         }
 
-        .news-item::before {
+        .service-list li::before {
             content: "•";
             position: absolute;
             left: 0;
-            color: #0366d6;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        .news-item .date {
-            color: #0366d6;
-            font-weight: 500;
-            margin-right: 10px;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill {
-            background-color: #f1f8ff;
-            color: #0366d6;
-            padding: 5px 15px;
-            border-radius: 15px;
-            font-size: 14px;
+            color: var(--accent);
         }
 
         footer {
             text-align: center;
-            padding: 20px;
-            color: #586069;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            padding: 24px 0 8px;
+            border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             body {
-                padding: 10px;
+                padding: 24px 18px 16px;
             }
 
-            header {
-                padding: 30px 0;
+            .header {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 20px;
             }
 
             .profile-img {
-                width: 120px;
-                height: 120px;
+                width: 150px;
+                height: 150px;
+            }
+
+            .news-item {
+                flex-direction: column;
+                gap: 0;
+                margin-bottom: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="./WechatIMG147.jpg" alt="Profile image" class="profile-img">
-        <h1>Yuyang Ji (吉宇阳)</h1>
-        <div class="social-links">
-            <a href="mailto:yuyangji953@gmail.com">Email</a>      
-            <a href="https://scholar.google.com/citations?hl=en&user=jQmYUfIAAAAJ" target="_blank">Google Scholar</a>
+    <header class="header">
+        <div class="header-text">
+            <h1>Yuyang Ji</h1>
+            <div class="subtitle">吉宇阳 &nbsp;·&nbsp; CS PhD Student @ Drexel University</div>
+            <p>
+                I am a first-year CS PhD student at Drexel University, advised by Prof.
+                <a href="https://scholar.google.com/citations?user=8Y9iUz0AAAAJ&hl=en" target="_blank">Feng Liu</a>.
+                Before that, I was a Research Associate at the School of Information Sciences,
+                University of Illinois Urbana-Champaign.
+                I received my M.S. in Computer Engineering from New York University and my B.E. from Southwest Jiaotong University.
+            </p>
+            <p>
+                My research interest is <strong>3D computer vision</strong>.
+            </p>
+            <div class="social-links">
+                <a href="mailto:yuyangji953@gmail.com">Email</a>
+                <a href="https://scholar.google.com/citations?hl=en&user=jQmYUfIAAAAJ" target="_blank">Google Scholar</a>
+            </div>
         </div>
+        <!-- Swap profile.jpg for WechatIMG147.jpg to bring the cat back -->
+        <img src="./profile.jpg" alt="Photo of Yuyang Ji" class="profile-img">
     </header>
 
-    <section>
-        <h2>About me</h2>
-<!--         <p>I am an incoming Ph.D. student at Drexel University starting in Fall 2025. Prior to this, I was a Research Associate at the School of Information Sciences, University of Illinois Urbana-Champaign, where I was advised by <a href="https://haohanwang.github.io" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">Haohan Wang</a>. I also closely collaborated with <a href="https://oodbag.github.io" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">Zeyi Huang</a> and <a href="https://pages.cs.wisc.edu/~yongjaelee/" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">Yong Jae Lee</a> at the University of Wisconsin-Madison. I hold an M.S. degree from New York University and a B.E. degree from Southwest Jiaotong University.</p> -->
-        <p>I am a first year CS PhD student at Drexel University, supervised by Prof. <a href="https://scholar.google.com/citations?user=8Y9iUz0AAAAJ&hl=en" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">Feng Liu</a>. Prior to this, I was a Research Associate at the School of Information Sciences, University of Illinois Urbana-Champaign. Prior to UIUC, I obtained my M.S. degree in Computer Engineering from New York University and B.E. degree in Safety Engineering from Southwest Jiaotong University.</p>
-        <p>My research interest is computer vision.</p>
+    <section id="news">
+        <h2>News</h2>
+        <div class="news-item">
+            <span class="date">Jun 2026</span>
+            <span>Serving as a reviewer for NeurIPS 2026.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">May 2026</span>
+            <span>One paper is provisionally accepted at <strong>MICCAI 2026</strong> (acceptance rate: 9%).</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Mar 2026</span>
+            <span>One paper is accepted by <strong>AIED 2026</strong>.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Feb 2026</span>
+            <span>Two papers are accepted by <strong>CVPR 2026</strong>.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Jan 2026</span>
+            <span>Serving as a reviewer for IJCV.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Oct 2025</span>
+            <span>Serving as a reviewer for CVPR 2026.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Jun 2025</span>
+            <span>One paper is accepted by <strong>ICCV 2025</strong>.</span>
+        </div>
+        <div class="news-item">
+            <span class="date">Feb 2025</span>
+            <span>One paper is accepted by <strong>CVPR 2025</strong>.</span>
+        </div>
     </section>
 
-<!--     <section>
-        <h2>Research</h2>
-        <div class="project">
-            <h3>Building a Mind Palace: Structuring Environment-Grounded Semantic Graphs for Effective Long Video Analysis with LLMs</h3>
-        </div>
-    </section> -->
+    <section id="publications">
+        <h2>Publications</h2>
 
+        <h3 class="year">2026</h3>
 
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2603.08564" target="_blank">BioGait-VLM: A Tri-Modal Vision-Language-Biomechanics Framework for Interpretable Clinical Gait Assessment</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>*, Erdong Chen*, Jacob K. Greenberg, Benjamin Steel, Faraz Arkam, Abigail Lewis, Pranay Singh, Feng Liu</div>
+            <div><span class="venue">Provisionally accepted at MICCAI 2026</span> <span class="footnote">(Acceptance rate: 9%)</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2603.08564" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2603.08564" target="_blank">PDF</a>
+            </div>
+        </div>
 
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2603.26938" target="_blank">From 3D Pose to Prose: Biomechanics-Grounded Vision&ndash;Language Coaching</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>, Yixuan Shen, Shengjie Zhu, Yu Kong, Feng Liu</div>
+            <div><span class="venue">CVPR 2026</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/pdf/2603.26938" target="_blank">PDF</a>
+            </div>
+        </div>
 
-    <section>
-        <h2>Recent News</h2>
-        <div class="news-item">
-            <span class="date">[2026.01]</span>
-            I am serving as a reviewer for ECCV 2026, ICML 2026 and IJCV 2026.
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2602.18466" target="_blank">Can Multimodal LLMs See Science Instruction? Benchmarking Pedagogical Reasoning in K-12 Classroom Videos</a>
+            </div>
+            <div class="authors">Yixuan Shen, Peng He, Honglu Liu, Jinxuan Fan, <span class="me">Yuyang Ji</span>, Tingting Li, Tianlong Chen, Kaidi Xu, Feng Liu</div>
+            <div><span class="venue">AIED 2026</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2602.18466" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2602.18466" target="_blank">PDF</a>
+            </div>
         </div>
-        <div class="news-item">
-            <span class="date">[2025.10]</span>
-            I am serving as a reviewer for CVPR 2026.
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Huang_Learning_to_Select_Visual_Tools_from_Experience_CVPR_2026_paper.pdf" target="_blank">Learning to Select Visual Tools from Experience</a>
+            </div>
+            <div class="authors">Zeyi Huang, <span class="me">Yuyang Ji</span>, Anirudh Sundara Rajan, Zefan Cai, Wen Xiao, Haohan Wang, Junjie Hu, Yong Jae Lee</div>
+            <div><span class="venue">CVPR 2026</span></div>
+            <div class="links">
+                <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Huang_Learning_to_Select_Visual_Tools_from_Experience_CVPR_2026_paper.pdf" target="_blank">PDF</a>
+            </div>
         </div>
-        <div class="news-item">
-            <span class="date">[2025.6]</span>
-            Our paper "CDA" is accepted by ICCV 2025.
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2605.18238" target="_blank">Non-Colliding Biometric Identities for Digital Entities: Geometry, Capacity, and Million-Scale Virtual Identity Provisioning</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>, Yixuan Shen, Anil Jain, Xiaoming Liu, Feng Liu</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2605.18238" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2605.18238" target="_blank">PDF</a>
+            </div>
         </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2602.18990" target="_blank">IDSelect: A RL-Based Cost-Aware Selection Agent for Video-based Multi-Modal Person Recognition</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>, Yixuan Shen, Kien Nguyen, Lifeng Zhou, Feng Liu</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2602.18990" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2602.18990" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <h3 class="year">2025</h3>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ji_Customizing_Domain_Adapters_for_Domain_Generalization_ICCV_2025_paper.pdf" target="_blank">Customizing Domain Adapters for Domain Generalization</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>*, Zeyi Huang*, Haohan Wang&dagger;, Yong Jae Lee&dagger;</div>
+            <div><span class="venue">ICCV 2025</span></div>
+            <div class="links">
+                <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ji_Customizing_Domain_Adapters_for_Domain_Generalization_ICCV_2025_paper.pdf" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2501.04336" target="_blank">Building a Mind Palace: Structuring Environment-Grounded Semantic Graphs for Effective Long Video Analysis with LLMs</a>
+            </div>
+            <div class="authors">Zeyi Huang, <span class="me">Yuyang Ji</span>, Xiaofang Wang, Nikhil Mehta, Tong Xiao, Donghyun Lee, Sigmund Vanvalkenburgh, Shengxin Zha, Bolin Lai, Licheng Yu, Ning Zhang, Yong Jae Lee&dagger;, Miao Liu&dagger;</div>
+            <div><span class="venue">CVPR 2025</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2501.04336" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2501.04336" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2505.20289" target="_blank">VisualToolAgent (VisTA): A Reinforcement Learning Framework for Visual Tool Selection</a>
+            </div>
+            <div class="authors">Zeyi Huang, <span class="me">Yuyang Ji</span>, Anirudh Sundara Rajan, Zefan Cai, Wen Xiao, Haohan Wang, Junjie Hu, Yong Jae Lee</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2505.20289" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2505.20289" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2504.09764" target="_blank">Socratic Chart: Cooperating Multiple Agents for Robust SVG Chart Understanding</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>, Haohan Wang</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2504.09764" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2504.09764" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2502.18530" target="_blank">IMPROVE: Iterative Model Pipeline Refinement and Optimization Leveraging LLM Experts</a>
+            </div>
+            <div class="authors">Eric Xue, Ke Chen, Zeyi Huang, <span class="me">Yuyang Ji</span>, Haohan Wang</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2502.18530" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2502.18530" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://arxiv.org/abs/2503.13058" target="_blank">Do Vision Models Develop Human-Like Progressive Difficulty Understanding?</a>
+            </div>
+            <div class="authors">Zeyi Huang, Utkarsh Ojha, <span class="me">Yuyang Ji</span>, Donghyun Lee, Yong Jae Lee</div>
+            <div><span class="venue preprint">arXiv preprint</span></div>
+            <div class="links">
+                <a href="https://arxiv.org/abs/2503.13058" target="_blank">arXiv</a>
+                <a href="https://arxiv.org/pdf/2503.13058" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <h3 class="year">2024</h3>
+
+        <div class="pub">
+            <div class="title">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10687693" target="_blank">LDNET: Semantic Segmentation of High-Resolution Images via Learnable Patch Proposal and Dynamic Refinement</a>
+            </div>
+            <div class="authors"><span class="me">Yuyang Ji</span>, Lianlei Shan</div>
+            <div><span class="venue">ICME 2024</span></div>
+            <div class="links">
+                <a href="https://ieeexplore.ieee.org/abstract/document/10687693" target="_blank">PDF</a>
+            </div>
+        </div>
+
+        <div class="footnote">* equal contribution &nbsp;&nbsp; &dagger; equal advising</div>
     </section>
 
-
-    
-    <section>
-    <h2>Publication</h2>
-
-
-
-        
-
-
-    <!-- <div class="project">
-        <h3>
-            <a href="#" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                IDSelect: A Cost-Aware Selection Agent for Video-based Multi-Modal Person Recognition
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(Under Submission)</span>
-        </h3>
-        <p>
-            <strong>Yuyang Ji</strong>, Yixuan Shen, Feng Liu
-        </p>
-    </div> -->
-        
-
-
-    <div class="project">
-        <h3>
-            <a href="https://openaccess.thecvf.com/content/ICCV2025/papers/Ji_Customizing_Domain_Adapters_for_Domain_Generalization_ICCV_2025_paper.pdf" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                Customizing Domain Adapters for Domain Generalization
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(ICCV 2025)</span>
-        </h3>
-        <p>
-            <strong>Yuyang Ji*</strong>, Zeyi Huang*, Haohan Wang†, Yong Jae Lee†
-        </p>
-    </div>
-
-
-    <!-- <div class="project">
-        <h3>
-            <a href="https://arxiv.org/pdf/2505.20289" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                VisualToolAgent (VisTA): A Reinforcement Learning Framework for Visual Tool Selection
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(Under Submission)</span>
-        </h3>
-        <p>
-            Zeyi Huang, <strong>Yuyang Ji</strong>, Anirudh Sundara Rajan, Zefan Cai, Wen Xiao, Haohan Wang, Junjie Hu, Yong Jae Lee
-        </p>
-    </div> -->
-
-
-    <!-- <div class="project">
-        <h3>
-            <a href="https://arxiv.org/pdf/2504.09764" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                Socratic Chart: Cooperating Multiple Agents for Robust SVG Chart Understanding
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(Under Submission)</span>
-        </h3>
-        <p>
-            <strong>Yuyang Ji</strong>, Haohan Wang
-        </p>
-    </div> -->
-
-
-        
-    <!-- <div class="project">
-        <h3>
-            <a href="https://arxiv.org/pdf/2502.18530" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                IMPROVE: Iterative Model Pipeline Refinement and Optimization Leveraging LLM Agents
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(Under Submission)</span>
-        </h3>
-        <p>
-            Eric Xue, Zeyi Huang, <strong>Yuyang Ji</strong>, Haohan Wang
-        </p>
-    </div> -->
-
-
-        
-    <!-- <div class="project">
-        <h3>
-            <a href="https://openreview.net/pdf?id=frbfEqZX5R" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                Do Vision Models Develop Human-Like Progressive Difficulty Understanding?
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(Under Submission)</span>
-        </h3>
-        <p>
-            Zeyi Huang, Utkarsh Ojha, <strong>Yuyang Ji</strong>, Donghyun Lee, Yong Jae Lee
-        </p>
-    </div> -->
-      
-
-
-    <div class="project">
-        <h3>
-            <a href="https://arxiv.org/pdf/2501.04336" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                Building a Mind Palace: Structuring Environment-Grounded Semantic Graphs for Effective Long Video Analysis with LLMs
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(CVPR 2025)</span>
-        </h3>
-        <p>
-            Zeyi Huang, <strong>Yuyang Ji</strong>, Xiaofang Wang, Nikhil Mehta, Tong Xiao, Donghyun Lee, Sigmund Vanvalkenburgh, Shengxin Zha, Bolin Lai, Licheng Yu, Ning Zhang, Yong Jae Lee†, Miao Liu†
-        </p>
-    </div>
-
-
-
-    <div class="project">
-        <h3>
-            <a href="https://ieeexplore.ieee.org/abstract/document/10687693" target="_blank" style="color: #0366d6; text-decoration: none; font-weight: 500;">
-                LDNET: Semantic Segmentation Of High-Resolution Images Via Learnable Patch Proposal And Dynamic Refinement
-            </a>
-            <span style="color: #586069; font-size: 0.9em;">(ICME 2024)</span>
-        </h3>
-        <p>
-            <strong>Yuyang Ji</strong>, Lianlei Shan
-        </p>
-    </div>
-
-        
-        
-</section>
-
+    <section id="service">
+        <h2>Academic Service</h2>
+        <ul class="service-list">
+            <li>Conference Reviewer: CVPR 2026, NeurIPS 2026</li>
+            <li>Journal Reviewer: IJCV</li>
+        </ul>
+    </section>
 
     <footer>
-        <p>© 2025 Yuyang Ji. All rights reserved.</p>
+        <p>© 2026 Yuyang Ji &nbsp;·&nbsp; Last updated July 2026</p>
     </footer>
 </body>
 </html>
